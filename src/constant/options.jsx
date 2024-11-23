@@ -50,4 +50,78 @@ export const SelectBudgetOptions = [
     },
 ]
 
-export const AI_PROMPT='Generate Travel Plan for Location : {location} , for {totalDays} days for {traveler} with a {budget} budget , Give me a Hotels options list with HotelName , HotelAddress, Price per night(range) ,geo coordinates , rating , description and suggest itinerary with array of list only containing DayNumber , placeName ,  PlaceDetails , Geo Coordinates , tickets Pricing(estimated) in USD,rating ,Time Travel each of the location for {totalDays} days with each day plan with best time to visit in a seperate list  in JSON format only'
+export const AI_PROMPT=`Generate a detailed Travel Plan for the location: {location}, for {totalDays} days for {traveler} with a {budget} budget. 
+
+1. Provide a Hotels options list in the following format:
+   - HotelName: (String) Name of the hotel.
+   - HotelAddress: (String) Full address of the hotel.
+   - pricePerNight: (Map) Estimated price range for a night in USD with:
+     - currency: USD
+     - min: Minimum price for one night.
+     - max: Maximum price for one night.
+   - geoCoordinates: (Map) GPS coordinates with:
+     - latitude: Latitude value.
+     - longitude: Longitude value.
+   - rating: (Number) Hotel rating.
+
+2. Provide a detailed itinerary for the trip. 
+   - Each day should be represented by a DayNumber field.
+   - Each day should contain a list of places to visit with the following details:
+     - placeName: (String) Name of the place.
+     - PlaceDetails: (String) Description of the place.
+     - geoCoordinates: (Map) GPS coordinates for the place with latitude and longitude.
+     - ticketPricing: (Map) Estimated ticket price in USD with:
+       - currency: USD
+       - estimate: Estimated cost.
+     - rating: (Number) Place rating.
+     - TimeToTravel: (String) Time estimated to travel to/from this place.
+     - BestTime: (String) Best time to visit this place.
+
+3. Format the response strictly in JSON format only, with the following structure:
+
+{
+  "tripData": {
+    "hotels": [
+      {
+        "HotelName": "string",
+        "HotelAddress": "string",
+        "pricePerNight": {
+          "currency": "USD",
+          "min": number,
+          "max": number
+        },
+        "geoCoordinates": {
+          "latitude": number,
+          "longitude": number
+        },
+        "rating": number
+      },
+      ...
+    ],
+    "itinerary": [
+      {
+        "DayNumber": number,
+        "places": [
+          {
+            "placeName": "string",
+            "PlaceDetails": "string",
+            "geoCoordinates": {
+              "latitude": number,
+              "longitude": number
+            },
+            "ticketPricing": {
+              "currency": "USD",
+              "estimate": number
+            },
+            "rating": number,
+            "TimeToTravel": "string",
+            "BestTime": "string"
+          },
+          ...
+        ]
+      },
+      ...
+    ]
+  }
+}
+Please ensure that all keys, styles, and variable names match this format exactly.`;
