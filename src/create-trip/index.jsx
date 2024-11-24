@@ -12,12 +12,6 @@ import { chatSession } from "@/service/AIModal";
 import React, { useEffect, useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { toast } from "sonner";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-} from "@/components/ui/dialog";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { db } from "@/service/firebaseConfig";
@@ -26,7 +20,6 @@ import { useNavigate } from "react-router-dom";
 function CreateTrip() {
   const [place, setPlace] = useState();
   const [formData, setFormData] = useState([]);
-  const [openDialog, setOpenDialog] = useState(false);
   const [loading , setLoading] = useState(false);
   
   const navigate  = useNavigate();
@@ -40,25 +33,6 @@ function CreateTrip() {
   useEffect(() => {
     console.log(formData);
   }, [formData]);
-
-  const login = useGoogleLogin({
-    onSuccess:(codeResp)=>GetUser(codeResp),
-    onError:(error)=>console.log(error)
-  })
-
-  const GetUser = (tokenInfo)=>{
-    axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?acess_token=${tokenInfo?.access_token}`,{
-    headers:{
-      Authorization:`Bearer ${tokenInfo?.access_token}`,
-      Accept:'Application/json'
-    }
-  }).then((resp)=>{
-    console.log(resp);
-    localStorage.setItem('user',JSON.stringify(resp?.data));
-    setOpenDialog(false);
-    handleGenerate();
-  })
-  }
 
   const  SaveAiTrip = async (TripData)=>
   {
@@ -80,7 +54,7 @@ function CreateTrip() {
     const user = localStorage.getItem('user');
     if(!user)
     {
-      setOpenDialog(true);
+      toast("Looks like you are not SIGNED IN");
       return;
     }
     if (
@@ -212,25 +186,6 @@ function CreateTrip() {
         "Generate Trip"
         }</Button>
       </div>
-      <Dialog open={openDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogDescription>
-              <div className="flex items-center justify-center">
-                  <img className="h-28" src="logoo.jpg"/>
-                    <h2 className="font-extrabold font-mono text-black text-2xl">Hey, Welcome to HORIZON !</h2>
-              </div>
-              <div className="flex justify-center w-full">
-             <Button 
-             onClick={login}
-             className="w-full">
-                  <FcGoogle /> Sign In with Google 
-              </Button>
-              </div>
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

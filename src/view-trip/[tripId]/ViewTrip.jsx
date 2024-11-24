@@ -1,7 +1,7 @@
 import { db } from '@/service/firebaseConfig';
 import {doc, getDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import InfoSection from '../components/infoSection';
 import Hotels from '../components/Hotels';
 import PlacesToVisit from '../components/PlacesToVisit';
@@ -11,9 +11,13 @@ function ViewTrip() {
   
     const {tripId} = useParams();
     const [tripData , setTripData] = useState({});
+    const navigate = useNavigate();
+    const user  = localStorage.getItem('user');
     useEffect( ()=>
-    {
-        tripId&&getData();
+        {
+            if(!user)
+                navigate('/');
+            tripId&&getData();
     },[tripId])
 
     const getData = async()=>{
