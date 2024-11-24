@@ -39,7 +39,7 @@ function CreateTrip() {
     setLoading(true);
     const user = JSON.parse(localStorage.getItem('user'));
     const docID = Date.now().toString();
-    await setDoc(doc(db, "AiTrips", docID), {
+    await setDoc(doc(db, "AItrips", docID), {
       userSelection:formData,
       tripData:JSON.parse(TripData),
       userEmail:user?.email,
@@ -95,11 +95,11 @@ function CreateTrip() {
   };
 
   return (
-    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-60 px-5 mt-10">
-      <h2 className="font-bold text-3xl">Tell us your travel preferences🏕️</h2>
+    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-60 px-5 p-10 bg-slate-50">
+      <h2 className="font-bold text-3xl">Let's Create a Trip🏕️</h2>
       <p className="mt-3 text-gray-500 text-xl">
-        Just provide some basic information, and our trip planner will generate
-        a customized itinerary based on your preferences
+        Just provide some basic information, Horizon will generate
+        a complete plan and customized itinerary based on your preferences 
       </p>
       <div className="mt-20 flex flex-col gap-10">
         <div>
@@ -139,7 +139,7 @@ function CreateTrip() {
                 <div
                   key={item.id}
                   onClick={() => handleInputChange("budget", item.title)}
-                  className={`p-4 border cursor-pointer rounded-lg hover:shadow-lg ${
+                  className={`p-4 border cursor-pointer rounded-lg hover:shadow-lg bg-white ${
                     formData?.budget == item.title && "border-black shadow-xl"
                   }`}
                 >
@@ -163,7 +163,7 @@ function CreateTrip() {
                 <div
                   key={item.id}
                   onClick={() => handleInputChange("traveler", item.people)}
-                  className={`p-4 border cursor-pointer rounded-lg hover:shadow-lg ${
+                  className={`p-4 border cursor-pointer rounded-lg hover:shadow-lg bg-white ${
                     formData?.traveler == item.people &&
                     "border-black shadow-xl"
                   }`}

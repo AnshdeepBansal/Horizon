@@ -21,7 +21,7 @@ function ViewTrip() {
     },[tripId])
 
     const getData = async()=>{
-        const tripRef = doc(db,'AiTrips',tripId); 
+        const tripRef = doc(db,'AItrips',tripId); 
         const snap = await getDoc(tripRef);    
         if (!snap.exists) {
             console.log('No such document!');
@@ -31,7 +31,7 @@ function ViewTrip() {
     }
     console.log('Document data:', tripData);
     return (
-    <div className='p-10 md:px-20 lg:px-44 xl:px-56' >
+    <div className='p-10 md:px-20 lg:px-44 xl:px-56 bg-slate-50' >
       <InfoSection obj={tripData}/>
       <Hotels obj={tripData?.tripData}/>
       <PlacesToVisit obj={tripData?.tripData}/>

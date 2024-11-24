@@ -5,12 +5,14 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
+    <>
+    <div className="z-0 fixed top-0 h-full bg-[url('/bg.jpg')] bg-cover">
+    <div className='z-1 h-full bg-black/[.2]'>
       <Hero/>
-    // <div className="z-0 h-screen bg-[url('https://www.smartertravel.com/wp-content/uploads/2020/03/ST_ZoomBackground_Beach03.jpg')] bg-cover">
-    // <div className='z-1 h-screen bg-black/[.4]'>
 
-    // </div>
-    // </div>
+    </div>
+    </div>
+    </>
   )
 }
 

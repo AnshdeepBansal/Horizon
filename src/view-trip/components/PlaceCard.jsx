@@ -45,7 +45,7 @@ function PlaceCard({ place }) {
       )}`}
       target="_blank"
     >
-      <div className="shadow-md border rounded-xl p-3 mt-2 flex gap-5 hover:scale-105 transition-all">
+      <div className="shadow-md border rounded-xl p-3 mt-2 flex gap-5 hover:scale-105 transition-all bg-white">
         <img
           src={photoUrl || "/default.jpeg"} // Use photo URL or default image
           alt={place?.placeName}

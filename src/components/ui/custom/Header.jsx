@@ -66,17 +66,26 @@ function Header() {
     console.log(user);
   });
   return (
-    <div className="top-0 p-2 shadow-lg flex justify-between items-center">
-      <img className="h-20" src="/logoo.jpg" />
-      <div className="font-sans font-bold px-5 py-3 text-center text-3xl">
-        Horizon
+    <div className="sticky top-0 p-1 px-3 shadow-lg flex justify-between items-center bg-white z-50">
+      <div className="flex justify-center items-center">
+        <img className="h-20" src="/logoo.jpg" />
+        <div className="from-accent-foreground font-bold py-3 text-center text-3xl">
+          Horizon
+        </div>
       </div>
       <div>
         {user ? (
           <div className="flex gap-5 items-center">
-            <Button variant="outline" className="rounded-full">
+            <a href="/create-trip">
+            <Button variant="outline" className="rounded-full hover:scale-105 transition-all hover:bg-blue-100">
+              Create trip +
+            </Button>
+            </a>
+            <a href="/my-trips">
+            <Button variant="outline" className="rounded-full hover:scale-105 transition-all hover:bg-blue-100">
               My Trips
             </Button>
+            </a>
             <Popover>
               <PopoverTrigger>
                 <img

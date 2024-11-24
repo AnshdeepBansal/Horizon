@@ -57,7 +57,7 @@ function Hotels({ obj }) {
             target="_blank"
             key={index}
           >
-            <div className="hover:scale-105 hover:shadow-sm hover:border transition-all rounded-xl p-1 cursor-pointer">
+            <div className="hover:scale-105 hover:shadow-sm hover:border transition-all rounded-xl p-2 cursor-pointer hover:bg-white h-[350px]">
               <img
                 src={photoUrls[index] || "/default.jpeg"} // Use photo URL or default image
                 className="rounded-xl object-cover h-[180px] w-full"
