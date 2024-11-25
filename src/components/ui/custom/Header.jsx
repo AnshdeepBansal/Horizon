@@ -40,7 +40,7 @@ function Header() {
   const GetUser = (tokenInfo) => {
     axios
       .get(
-        `https://www.googleapis.com/oauth2/v1/userinfo?acess_token=${tokenInfo?.access_token}`,
+        `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo?.access_token}`,
         {
           headers: {
             Authorization: `Bearer ${tokenInfo?.access_token}`,
@@ -64,7 +64,7 @@ function Header() {
 
   useEffect(() => {
     console.log(user);
-  });
+  },[]);
   return (
     <div className="sticky top-0 p-1 px-3 shadow-lg flex justify-between items-center bg-white z-50">
       <div className="flex justify-center items-center">

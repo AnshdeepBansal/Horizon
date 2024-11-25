@@ -60,7 +60,7 @@ function CreateTrip() {
     if (
       !formData?.noOfDays ||
       formData?.noOfDays > 10 ||
-      formData?.noOfDays < 0 ||
+      formData?.noOfDays <= 0 ||
       !formData?.budget ||
       !formData?.traveler ||
       !formData.location
