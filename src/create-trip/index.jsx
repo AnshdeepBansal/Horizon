@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FcGoogle } from "react-icons/fc";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import {doc , setDoc} from "firebase/firestore";
 import {
@@ -12,8 +11,6 @@ import { chatSession } from "@/service/AIModal";
 import React, { useEffect, useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { toast } from "sonner";
-import { useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
 import { db } from "@/service/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 

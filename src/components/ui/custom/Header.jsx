@@ -59,12 +59,12 @@ function Header() {
   const Logout = () => {
     localStorage.clear();
     setOpenAlert(false);
-    window.location.reload();
+    window.location.href = "/";
   };
 
   useEffect(() => {
     console.log(user);
-  },[]);
+  },[user]);
   return (
     <div className="sticky top-0 p-1 px-3 shadow-lg flex justify-between items-center bg-white z-50">
       <div className="flex justify-center items-center">
