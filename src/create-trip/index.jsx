@@ -28,6 +28,12 @@ function CreateTrip() {
   };
 
   useEffect(() => {
+    const user = localStorage.getItem('user');
+    if(!user)
+    {
+      navigate('/');
+      return;
+    }
     console.log(formData);
   }, [formData]);
 
