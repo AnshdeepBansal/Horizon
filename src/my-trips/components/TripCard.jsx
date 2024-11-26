@@ -41,7 +41,7 @@ function TripCard({ trip }) {
     <Link to={`/view-trip/${trip?.id}`}>
         <div className="hover:scale-105 transition-all">
             <img src={photoUrl}
-            alt={trip?.userSelection?.location?.label} className="object-cover rounded-xl h-[200px]" />
+            alt={trip?.userSelection?.location?.label} className="object-cover rounded-xl h-[200px] w-full" />
             <div>
                 
                 <h2 className='font-bold text-lg'>{trip?.userSelection?.location?.label}</h2>
