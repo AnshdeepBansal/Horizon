@@ -81,7 +81,7 @@ function Header() {
               Create trip +
             </Button>
             </Link>
-            <Link href="/my-trips">
+            <Link to="/my-trips">
             <Button variant="outline" className="rounded-full hover:scale-105 transition-all hover:bg-blue-100">
               My Trips
             </Button>
