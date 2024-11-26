@@ -26,6 +26,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { Link } from "react-router-dom";
 
 function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -76,16 +77,16 @@ function Header() {
       <div>
         {user ? (
           <div className="flex gap-5 items-center">
-            <a href="/create-trip">
+            <Link to="/create-trip">
             <Button variant="outline" className="rounded-full hover:scale-105 transition-all hover:bg-blue-100">
               Create trip +
             </Button>
-            </a>
-            <a href="/my-trips">
+            </Link>
+            <Link href="/my-trips">
             <Button variant="outline" className="rounded-full hover:scale-105 transition-all hover:bg-blue-100">
               My Trips
             </Button>
-            </a>
+            </Link>
             <Popover>
               <PopoverTrigger>
                 <img
