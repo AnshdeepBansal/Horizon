@@ -31,6 +31,7 @@ function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
   const [openDialog, setOpenDialog] = useState(false);
   const [openAlert , setOpenAlert] = useState(false);
+  const [signIn , setSignIn] = useState(false);
 
   const login = useGoogleLogin({
     onSuccess: (codeResp) => GetUser(codeResp),
@@ -52,7 +53,7 @@ function Header() {
         console.log(resp);
         localStorage.setItem("user", JSON.stringify(resp?.data));
         setOpenDialog(false);
-        window.location.reload();
+        setSignIn(true);
       });
   };
 
@@ -63,8 +64,9 @@ function Header() {
   };
 
   useEffect(() => {
-    console.log(user);
-  },[user]);
+    if(user)
+      setSignIn(true);
+  },[]);
   return (
     <div className="sticky top-0 p-1 px-3 shadow-lg flex justify-between items-center bg-white z-50">
       <div className="flex justify-center items-center">
@@ -74,7 +76,7 @@ function Header() {
         </div>
       </div>
       <div>
-        {user ? (
+        {signIn ? (
           <div className="flex gap-5 items-center">
             <Link to="/create-trip">
             <Button variant="outline" className="rounded-full hover:scale-105 transition-all hover:bg-blue-100">
@@ -119,7 +121,7 @@ function Header() {
           </div>
         )}
       </div>
-      <Dialog open={openDialog}>
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="font-extrabold font-mono text-black text-2xl text-center mb-1">
