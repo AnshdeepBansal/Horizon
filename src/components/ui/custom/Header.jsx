@@ -70,8 +70,8 @@ function Header() {
   return (
     <div className="sticky top-0 p-1 px-3 shadow-lg flex justify-between items-center bg-white z-50">
       <div className="flex justify-center items-center">
-        <img className="h-20" src="/logoo.jpg" />
-        <div className="from-accent-foreground font-bold py-3 text-center text-3xl">
+        <img className="h-10 md:h-16" src="/logoo.jpg" />
+        <div className="from-accent-foreground font-bold py-1 md:py-2 text-center text-xl lg:text-3xl">
           Horizon
         </div>
       </div>
@@ -79,12 +79,12 @@ function Header() {
         {signIn ? (
           <div className="flex gap-5 items-center">
             <Link to="/create-trip">
-            <Button variant="outline" className="rounded-full hover:scale-105 transition-all hover:bg-blue-100">
+            <Button variant="outline" className="h-[30px] w-[70px] text-[10px] lg:h-[45px] lg:w-[115px] lg:text-[16px] rounded-full hover:scale-105 transition-all hover:bg-blue-100">
               Create trip +
             </Button>
             </Link>
             <Link to="/my-trips">
-            <Button variant="outline" className="rounded-full hover:scale-105 transition-all hover:bg-blue-100">
+            <Button variant="outline" className="h-[30px] w-[70px] text-[10px] lg:h-[45px] lg:w-[115px] lg:text-[16px] rounded-full hover:scale-105 transition-all hover:bg-blue-100">
               My Trips
             </Button>
             </Link>
@@ -92,19 +92,19 @@ function Header() {
               <PopoverTrigger>
                 <img
                   src={user?.picture}
-                  className="h-[35px] w-[35px] rounded-full"
+                  className="h-[30px] w-[30px] lg:h-[40px] lg:w-[40px] rounded-full"
                 />
               </PopoverTrigger>
-              <PopoverContent className="flex flex-col gap-1">
-                <div className="shadow-lg p-2 text-center rounded-xl">
+              <PopoverContent className="flex flex-col">
+                <div className="shadow-lg p-2 text-center rounded-xl text-sm">
                   Hey! {user?.name}
                 </div>
-                <div className="shadow-lg p-2 text-center rounded-xl">
+                <div className="shadow-lg p-2 text-center rounded-xl text-sm">
                   {user?.email}
                 </div>
                 <div
                   onClick={()=>{setOpenAlert(true)}}
-                  className="shadow-sm p-2 hover:bg-red-400 mt-5 transition-colors  bg-red-100 cursor-pointer rounded-xl text-center font-medium hover:text-white"
+                  className="text-sm shadow-sm p-2 hover:bg-red-400 mt-5 transition-colors  bg-red-100 cursor-pointer rounded-xl text-center font-medium hover:text-white"
                 >
                   LogOut
                 </div>
@@ -117,7 +117,7 @@ function Header() {
               setOpenDialog(true);
             }}
           >
-            <Button className="hover:scale-105 transition-all">Sign In</Button>
+            <Button className="h-8 md:h-10 hover:scale-105 transition-all">Sign In</Button>
           </div>
         )}
       </div>

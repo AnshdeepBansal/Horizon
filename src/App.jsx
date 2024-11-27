@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-    <div className="z-0 fixed top-0 h-full bg-[url('/bg.jpg')] bg-cover">
+    <div className="z-0 fixed top-0 h-full bg-[url('/bg.jpg')] bg-cover bg-center">
     <div className='z-1 h-full bg-black/[.2]'>
       <Hero/>
     </div>
