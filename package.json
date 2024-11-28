@@ -20,7 +20,9 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cors": "^2.8.5",
+    "express": "^4.21.1",
     "firebase": "^11.0.2",
+    "http-proxy-middleware": "^3.0.3",
     "lucide-react": "^0.456.0",
     "next-themes": "^0.4.3",
     "react": "^18.3.1",
@@ -49,5 +51,10 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "vite": "^5.4.10"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

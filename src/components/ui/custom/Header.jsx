@@ -121,7 +121,7 @@ function Header() {
           </div>
         )}
       </div>
-      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+      <Dialog className="m-1" open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="font-extrabold font-mono text-black text-2xl text-center mb-1">

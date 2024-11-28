@@ -8,7 +8,6 @@ function InfoSection({ obj }) {
   // State to hold the photo URL
   const [photoUrl, setPhotoUrl] = useState("/default.jpeg");
 
-  // Function to fetch the place photo
   const GetPlacePhoto = async () => {
     if (!data?.location?.label) {
       console.warn("Location label is missing.");
@@ -17,10 +16,10 @@ function InfoSection({ obj }) {
   
     try {
       const API_KEY = import.meta.env.VITE_GOOGLE_PLACE_API_KEY;
-      const query = encodeURIComponent(data.location.label); // Encode the query to ensure it's URL-safe
-      const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&key=${API_KEY}`;
+      const query = encodeURIComponent(data.location.label); // Encode query
+      const searchUrl = `http://localhost:3000/google-api/maps/api/place/textsearch/json?query=${query}&key=${API_KEY}`;
   
-      // Fetch place data
+      // Fetch place data via the proxy server
       const searchResponse = await fetch(searchUrl);
       const searchData = await searchResponse.json();
   
@@ -28,7 +27,7 @@ function InfoSection({ obj }) {
         const photoReference = searchData.results[0].photos[0].photo_reference;
   
         // Construct the photo URL
-        const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=${photoReference}&key=${API_KEY}`;
+        const photoUrl = `http://localhost:3000/google-api/maps/api/place/photo?maxwidth=800&photo_reference=${photoReference}&key=${API_KEY}`;
         setPhotoUrl(photoUrl); // Update state with the photo URL
       } else {
         console.warn("No photo reference found for the place.");
@@ -37,6 +36,7 @@ function InfoSection({ obj }) {
       console.error("Error fetching place photo:", error);
     }
   };
+  
 
   // Fetch the photo when the component mounts
   useEffect(() => {

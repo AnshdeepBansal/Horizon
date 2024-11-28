@@ -53,9 +53,9 @@ function Hero() {
   }
   return (
     <>
-    <div className="z-10 flex flex-col items-center lg:mx-52 gap-10 mt-12" >
-      <h1 className='font-extrabold text-[35px] lg:text-[50px] text-center mt-10 lg:mt-16'><span className='text-white'>Discover Your Next Adventure with Us:</span> Personalized Itineraries at Your Fingertips</h1>
-        <p className='text-2xl text-gray-900 text-center bg-slate-100 bg-opacity-35'>Your personal trip planner and tarvel curator, creating custom itineraries tailored to your interests and budget</p>
+    <div className="z-10 flex flex-col items-center lg:mx-52 gap-10 m-1 mt-12" >
+      <h1 className='font-extrabold text-[35px] lg:text-[50px] text-center mt-10 lg:mt-16 bg-slate-500 bg-opacity-20 rounded-2xl'><span className='text-white'>Discover Your Next Adventure with Us:</span> Personalized Itineraries at Your Fingertips</h1>
+        <p className='text-2xl text-gray-900 text-center bg-slate-100 bg-opacity-25 rounded-xl p-1'>Your personal trip planner and tarvel curator, creating custom itineraries tailored to your interests and budget</p>
         <Button onClick={()=>{handleClick()}} className="h-16 text-xl font-serif shadow-xl rounded-xl hover:scale-105 transition-all hover:bg-black">Get Strated, it's Free</Button>
     </div>
     <Dialog open={openDialog} onOpenChange={setOpenDialog}>
