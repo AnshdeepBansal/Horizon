@@ -68,7 +68,7 @@ function Header() {
       setSignIn(true);
   },[]);
   return (
-    <div className="sticky top-0 p-1 px-3 shadow-lg flex justify-between items-center bg-white z-50">
+    <div className="sticky top-0 p-2 px-3 shadow-lg flex justify-between items-center bg-white z-50">
       <div className="flex justify-center items-center">
         <img className="h-10 md:h-16" src="/logoo.jpg" />
         <div className="from-accent-foreground font-bold py-1 md:py-2 text-center text-xl lg:text-3xl">
@@ -77,7 +77,7 @@ function Header() {
       </div>
       <div>
         {signIn ? (
-          <div className="flex gap-5 items-center">
+          <div className="flex gap-2 items-center">
             <Link to="/create-trip">
             <Button variant="outline" className="h-[30px] w-[70px] text-[10px] lg:h-[45px] lg:w-[115px] lg:text-[16px] rounded-full hover:scale-105 transition-all hover:bg-blue-100">
               Create trip +
