@@ -13,18 +13,24 @@ function Hotels({ obj }) {
       const API_KEY = import.meta.env.VITE_GOOGLE_PLACE_API_KEY;
       const photoPromises = list.map(async (hotel) => {
         const query = `${hotel?.HotelName} in ${hotel?.HotelAddress}`;
-        const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(
+        const searchUrl = `https://proxy-server-imo9.onrender.com/google-api/maps/api/place/textsearch/json?query=${encodeURIComponent(
           query
         )}&key=${API_KEY}`;
 
         // Fetch place data
         const response = await fetch(searchUrl);
+
+        // Check if the response is successful
+        if (!response.ok) {
+          throw new Error("Failed to fetch place data");
+        }
+
         const data = await response.json();
 
         // If photo exists, return photo URL; otherwise, return default
         if (data?.results?.[0]?.photos?.[0]?.photo_reference) {
           const photoReference = data.results[0].photos[0].photo_reference;
-          return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoReference}&key=${API_KEY}`;
+          return `https://proxy-server-imo9.onrender.com/google-api/maps/api/place/photo?maxwidth=800&photo_reference=${photoReference}&key=${API_KEY}`;
         } else {
           return "/default.jpeg"; // Default image if no photo available
         }

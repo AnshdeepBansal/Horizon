@@ -9,9 +9,9 @@ function PlaceCard({ place }) {
     try {
       const API_KEY = import.meta.env.VITE_GOOGLE_PLACE_API_KEY;
       const query = place?.placeName; // Using place name for the query
-      const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(
-        query
-      )}&key=${API_KEY}`;
+      const searchUrl = `https://proxy-server-imo9.onrender.com/google-api/maps/api/place/textsearch/json?query=${encodeURIComponent(
+          query
+        )}&key=${API_KEY}`;
 
       // Fetch place data
       const response = await fetch(searchUrl);
@@ -20,7 +20,7 @@ function PlaceCard({ place }) {
       // If photo exists, return photo URL; otherwise, return default
       if (data?.results?.[0]?.photos?.[0]?.photo_reference) {
         const photoReference = data.results[0].photos[0].photo_reference;
-        const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoReference}&key=${API_KEY}`;
+        const photoUrl = `https://proxy-server-imo9.onrender.com/google-api/maps/api/place/photo?maxwidth=800&photo_reference=${photoReference}&key=${API_KEY}`;
         setPhotoUrl(photoUrl); // Update state with the photo URL
       } else {
         setPhotoUrl("/default.jpeg"); // Default image if no photo available
