@@ -10,23 +10,28 @@ function InfoSection({ obj }) {
 
   // Function to fetch the place photo
   const GetPlacePhoto = async () => {
+    if (!data?.location?.label) {
+      console.warn("Location label is missing.");
+      return;
+    }
+  
     try {
       const API_KEY = import.meta.env.VITE_GOOGLE_PLACE_API_KEY;
-      const query = data?.location?.label;
+      const query = encodeURIComponent(data.location.label); // Encode the query to ensure it's URL-safe
       const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&key=${API_KEY}`;
-
+  
       // Fetch place data
       const searchResponse = await fetch(searchUrl);
       const searchData = await searchResponse.json();
-
+  
       if (searchData?.results?.[0]?.photos?.[0]?.photo_reference) {
         const photoReference = searchData.results[0].photos[0].photo_reference;
-
+  
         // Construct the photo URL
         const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=${photoReference}&key=${API_KEY}`;
         setPhotoUrl(photoUrl); // Update state with the photo URL
       } else {
-        console.error("No photo reference found for the place.");
+        console.warn("No photo reference found for the place.");
       }
     } catch (error) {
       console.error("Error fetching place photo:", error);
