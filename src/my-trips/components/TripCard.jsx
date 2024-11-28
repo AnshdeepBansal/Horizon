@@ -11,9 +11,9 @@ function TripCard({ trip }) {
       const query = trip?.userSelection?.location?.label; // Using location label for the query
       if (!query) return;
 
-      const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(
-        query
-      )}&key=${API_KEY}`;
+      const searchUrl = `https://proxy-server-imo9.onrender.com/google-api/maps/api/place/textsearch/json?query=${encodeURIComponent(
+          query
+        )}&key=${API_KEY}`;
 
       // Fetch place data
       const response = await fetch(searchUrl);
@@ -22,7 +22,7 @@ function TripCard({ trip }) {
       // If photo exists, update the photo URL; otherwise, use default
       if (data?.results?.[0]?.photos?.[0]?.photo_reference) {
         const photoReference = data.results[0].photos[0].photo_reference;
-        const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoReference}&key=${API_KEY}`;
+        const photoUrl = `https://proxy-server-imo9.onrender.com/google-api/maps/api/place/photo?maxwidth=800&photo_reference=${photoReference}&key=${API_KEY}`;
         setPhotoUrl(photoUrl);
       }
     } catch (error) {
