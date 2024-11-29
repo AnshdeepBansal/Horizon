@@ -60,14 +60,19 @@ function CreateTrip() {
       toast("Looks like you are not SIGNED IN");
       return;
     }
-    if(formData?.noOfDays > 10)
+    if(formData?.noOfDays <= 0)
     {
-      toast("Saale Ghar thodi le liya udhar 🤬, 10 din se kam ki trip hoti hai😘");
+      toast("Tabhi Tera JEE nhi nikla😘");
+      return;
+    }
+    if(formData?.noOfDays > 10
+      )
+    {
+      toast("Tera Baap dega " + formData?.noOfDays + " din ki trip ka paisa🤬");
       return;
     }
     if (
-      !formData?.noOfDays ||
-      formData?.noOfDays <= 0 ||
+      !formData?.noOfDays  ||
       !formData?.budget ||
       !formData?.traveler ||
       !formData.location
