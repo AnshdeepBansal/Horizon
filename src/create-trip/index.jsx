@@ -60,9 +60,13 @@ function CreateTrip() {
       toast("Looks like you are not SIGNED IN");
       return;
     }
+    if(formData?.noOfDays > 10)
+    {
+      toast("Saale Ghar thodi le liya udhar 🤬, 10 din se kam ki trip hoti hai😘");
+      return;
+    }
     if (
       !formData?.noOfDays ||
-      formData?.noOfDays > 10 ||
       formData?.noOfDays <= 0 ||
       !formData?.budget ||
       !formData?.traveler ||
