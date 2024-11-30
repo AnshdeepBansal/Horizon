@@ -52,7 +52,9 @@ export const SelectBudgetOptions = [
 
 export const AI_PROMPT=`Generate a detailed Travel Plan for the location: {location}, for {totalDays} days for {traveler} with a {budget} budget. 
 
-1. Provide a Hotels options list in the following format:
+1. Weather:(String) general Weather conditions there with approx range of temperature
+
+2. Provide a Hotels options list in the following format:
    - HotelName: (String) Name of the hotel.
    - HotelAddress: (String) Full address of the hotel.
    - pricePerNight: (Map) Estimated price range for a night in USD with:
@@ -64,15 +66,12 @@ export const AI_PROMPT=`Generate a detailed Travel Plan for the location: {locat
      - longitude: Longitude value.
    - rating: (Number) Hotel rating.
 
-2. Provide a detailed itinerary for the trip. 
+3. Provide a detailed itinerary for the trip. 
    - Each day should be represented by a DayNumber field.
    - Each day should contain a list of places to visit with the following details:
      - placeName: (String) Name of the place.
      - PlaceDetails: (String) Description of the place.
      - geoCoordinates: (Map) GPS coordinates for the place with latitude and longitude.
-     - ticketPricing: (Map) Estimated ticket price in USD with:
-       - currency: USD
-       - estimate: Estimated cost.
      - rating: (Number) Place rating.
      - TimeToTravel: (String) Time estimated to travel to/from this place.
      - BestTime: (String) Best time to visit this place.
@@ -81,6 +80,7 @@ export const AI_PROMPT=`Generate a detailed Travel Plan for the location: {locat
 
 {
   "tripData": {
+    "Weather":"string"
     "hotels": [
       {
         "HotelName": "string",
@@ -108,10 +108,6 @@ export const AI_PROMPT=`Generate a detailed Travel Plan for the location: {locat
             "geoCoordinates": {
               "latitude": number,
               "longitude": number
-            },
-            "ticketPricing": {
-              "currency": "USD",
-              "estimate": number
             },
             "rating": number,
             "TimeToTravel": "string",

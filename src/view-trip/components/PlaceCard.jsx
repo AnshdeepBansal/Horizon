@@ -51,7 +51,7 @@ function PlaceCard({ place }) {
           <img
             src={photoUrl || "/default.jpeg"} // Use photo URL or default image
             alt={place?.placeName}
-            className="h-[200px] rounded-xl object-cover object-center"
+            className="h-[220px] rounded-xl object-cover object-center"
           />
         </div>
 

@@ -6,6 +6,7 @@ import InfoSection from '../components/InfoSection';
 import Hotels from '../components/Hotels';
 import PlacesToVisit from '../components/PlacesToVisit';
 import Footer from '../components/Footer';
+import Weather from '../components/Weather';
 
 function ViewTrip() {
   
@@ -31,8 +32,9 @@ function ViewTrip() {
     }
     console.log('Document data:', tripData);
     return (
-    <div className='md:px-20 lg:px-44 xl:px-56 bg-slate-50' >
+    <div className='md:px-20 lg:px-40 bg-slate-50' >
       <InfoSection obj={tripData}/>
+      <Weather obj={tripData?.tripData}/>
       <Hotels obj={tripData?.tripData}/>
       <PlacesToVisit obj={tripData?.tripData}/>
       <Footer/>
