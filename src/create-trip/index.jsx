@@ -60,24 +60,34 @@ function CreateTrip() {
       toast("Looks like you are not SIGNED IN");
       return;
     }
-    if(formData?.noOfDays <= 0)
-    {
-      toast("Tabhi Tera JEE nhi nikla😘");
+    if (!formData.location) {
+      toast("❌INVALID , Please ENTER the location");
       return;
     }
-    if(formData?.noOfDays > 10
-      )
+    if(!formData?.noOfDays)
+      {
+        toast("❌INVALID , Please enter number of Days of your trip");
+        return;
+      }
+      if(formData?.noOfDays <= 0)
+      {
+        toast("Number of Days enter krne th aapka IQ nahi😘");
+        return;
+      }
+      if(formData?.noOfDays > 10
+        )
+      {
+        toast("Tera Baap dega " + formData?.noOfDays + " din ki trip ka paisa🤬");
+        return;
+      }
+    if(!formData?.budget)
     {
-      toast("Tera Baap dega " + formData?.noOfDays + " din ki trip ka paisa🤬");
+      toast("❌INVALID , Please select your Budget for the trip");
       return;
     }
-    if (
-      !formData?.noOfDays  ||
-      !formData?.budget ||
-      !formData?.traveler ||
-      !formData.location
-    ) {
-      toast("❌INVALID , Please ENTER ALL THE DETAILS CORRECTLY");
+    if(!formData?.traveler)
+    {
+      toast("❌INVALID , Please select number of Travelers");
       return;
     }
     setLoading(true);

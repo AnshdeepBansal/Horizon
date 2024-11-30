@@ -10,8 +10,8 @@ function PlaceCard({ place }) {
       const API_KEY = import.meta.env.VITE_GOOGLE_PLACE_API_KEY;
       const query = place?.placeName; // Using place name for the query
       const searchUrl = `https://proxy-server-imo9.onrender.com/google-api/maps/api/place/textsearch/json?query=${encodeURIComponent(
-          query
-        )}&key=${API_KEY}`;
+        query
+      )}&key=${API_KEY}`;
 
       // Fetch place data
       const response = await fetch(searchUrl);
@@ -45,16 +45,21 @@ function PlaceCard({ place }) {
       )}`}
       target="_blank"
     >
-      <div className="shadow-md border rounded-xl p-3 mt-2 flex gap-5 hover:scale-105 transition-all bg-white">
-        <img
-          src={photoUrl || "/default.jpeg"} // Use photo URL or default image
-          alt={place?.placeName}
-          className="w-[130px] h-[130px] rounded-xl object-cover"
-        />
-        <div>
-          <h2 className="font-bold text-lg">{place?.placeName}</h2>
-          <p className="text-sm text-gray-600">{place?.PlaceDetails}</p>
-          <h2 className="font-semibold text-sm mt-3">🕒{place?.TimeToTravel}</h2>
+      <div className="h-[260px] flex items-center gap-4 p-4 shadow-md border rounded-xl bg-white hover:scale-105 transition-transform mt-2">
+        {/* Image Section */}
+        <div className="w-2/5 h-100%">
+          <img
+            src={photoUrl || "/default.jpeg"} // Use photo URL or default image
+            alt={place?.placeName}
+            className="h-[200px] rounded-xl object-cover object-center"
+          />
+        </div>
+
+        {/* Text Section */}
+        <div className="w-3/5 flex flex-col justify-between items-start">
+          <h2 className="font-bold text-lg sm:text-xl">{place?.placeName}</h2>
+          <p className="text-sm sm:text-base text-gray-600 mt-2">{place?.PlaceDetails}</p>
+          <h2 className="font-semibold text-sm sm:text-base mt-3">🕒 {place?.TimeToTravel}</h2>
         </div>
       </div>
     </Link>

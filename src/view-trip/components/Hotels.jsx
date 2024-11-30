@@ -52,9 +52,11 @@ function Hotels({ obj }) {
   }, [list]);
 
   return (
-    <div>
-      <h2 className="font-bold text-xl mt-5 mb-5">Hotel Recommendations</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+    <div className="p-4 md:p-8">
+      <h2 className="font-bold text-lg md:text-xl mt-5 mb-5">
+        Hotel Recommendations
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
         {list.map((hotel, index) => (
           <Link
             to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -63,20 +65,24 @@ function Hotels({ obj }) {
             target="_blank"
             key={index}
           >
-            <div className="hover:scale-105 hover:shadow-sm hover:border transition-all rounded-xl p-2 cursor-pointer hover:bg-white h-[350px]">
+            <div className="hover:scale-105 hover:shadow-md hover:border transition-all rounded-xl p-2 cursor-pointer hover:bg-white h-[350px]">
               <img
-                src={photoUrls[index] || "/default.jpeg"} // Use photo URL or default image
+                src={photoUrls[index] || "/default.jpeg"}
                 className="rounded-xl object-cover h-[180px] w-full"
-                alt={hotel?.HotelName}
+                alt={hotel?.HotelName} 
               />
-              <div className="my-2 flex flex-col gap-2">
-                <h2 className="font-medium">{hotel?.HotelName}</h2>
-                <h2 className="text-xs text-gray-500">📍{hotel?.HotelAddress}</h2>
-                <h2 className="text-sm">
+              <div className="my-2 flex flex-col gap-1 sm:gap-2">
+                <h2 className="font-medium text-sm sm:text-md md:text-lg">
+                  {hotel?.HotelName}
+                </h2>
+                <h2 className="text-xs sm:text-sm text-gray-500">
+                  📍{hotel?.HotelAddress}
+                </h2>
+                <h2 className="text-xs sm:text-sm">
                   ${hotel?.pricePerNight?.min} - ${hotel?.pricePerNight?.max} per
                   night
                 </h2>
-                <h2 className="text-sm">⭐{hotel?.rating} stars</h2>
+                <h2 className="text-xs sm:text-sm">⭐{hotel?.rating} stars</h2>
               </div>
             </div>
           </Link>

@@ -31,7 +31,7 @@ function ViewTrip() {
     }
     console.log('Document data:', tripData);
     return (
-    <div className='p-10 md:px-20 lg:px-44 xl:px-56 bg-slate-50' >
+    <div className='md:px-20 lg:px-44 xl:px-56 bg-slate-50' >
       <InfoSection obj={tripData}/>
       <Hotels obj={tripData?.tripData}/>
       <PlacesToVisit obj={tripData?.tripData}/>
