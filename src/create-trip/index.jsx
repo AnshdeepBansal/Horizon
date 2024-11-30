@@ -141,7 +141,7 @@ function CreateTrip() {
         </div>
         <div>
           <h2 className="text-xl my-3 font-medium">
-            How many days you are planning your trip?📅
+            How many days you are planning your trip?📅 {"(between 1 to 10 days)"}
           </h2>
           <Input
             placeholder={"Example - 3"}
