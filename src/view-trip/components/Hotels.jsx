@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Hotels({ obj }) {
+function Hotels({ obj , location}) {
   const list = obj?.tripData?.hotels || [];
 
   // State to store photos for each hotel
@@ -12,7 +12,7 @@ function Hotels({ obj }) {
     try {
       const API_KEY = import.meta.env.VITE_GOOGLE_PLACE_API_KEY;
       const photoPromises = list.map(async (hotel) => {
-        const query = `${hotel?.HotelName} in ${hotel?.HotelAddress}`;
+        const query = `${hotel?.HotelName} in ${hotel?.HotelAddress},${location}`;
         const searchUrl = `https://proxy-server-imo9.onrender.com/google-api/maps/api/place/textsearch/json?query=${encodeURIComponent(
           query
         )}&key=${API_KEY}`;
@@ -53,7 +53,7 @@ function Hotels({ obj }) {
 
   return (
     <div className="p-2 md:p-6">
-      <h2 className="font-bold text-lg md:text-xl mt-5 mb-5">
+      <h2 className="font-bold text-lg md:text-xl mt-2 mb-2">
         Hotel Recommendations
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -65,7 +65,7 @@ function Hotels({ obj }) {
             target="_blank"
             key={index}
           >
-            <div className="hover:scale-105 hover:shadow-md hover:border transition-all rounded-xl p-2 cursor-pointer hover:bg-white h-[300px] md:h-[380px]">
+            <div className="hover:scale-110 scale-105 hover:shadow-md hover:border transition-all rounded-xl p-2 cursor-pointer hover:bg-white h-[300px] md:h-[375px]">
               <img
                 src={photoUrls[index] || "/default.jpeg"}
                 className="rounded-xl object-cover h-[180px] w-full"
@@ -79,7 +79,7 @@ function Hotels({ obj }) {
                   📍{hotel?.HotelAddress}
                 </h2>
                 <h2 className="text-xs sm:text-sm">
-                  ${hotel?.pricePerNight?.min} - ${hotel?.pricePerNight?.max} per
+                ${hotel?.pricePerNight?.min} - ${hotel?.pricePerNight?.max} per
                   night
                 </h2>
                 <h2 className="text-xs sm:text-sm">⭐{hotel?.rating} stars</h2>

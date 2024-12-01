@@ -35,8 +35,8 @@ function ViewTrip() {
     <div className='md:px-20 lg:px-40 bg-slate-50' >
       <InfoSection obj={tripData}/>
       <Weather obj={tripData?.tripData}/>
-      <Hotels obj={tripData?.tripData}/>
-      <PlacesToVisit obj={tripData?.tripData}/>
+      <Hotels obj={tripData?.tripData} location={tripData?.userSelection?.location?.label}/>
+      <PlacesToVisit obj={tripData}/>
       <Footer/>
     </div>
   )

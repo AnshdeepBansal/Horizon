@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function PlaceCard({ place }) {
+function PlaceCard({ place,location }) {
   const [photoUrl, setPhotoUrl] = useState("");
 
   // Function to fetch the place photo based on place name
   const fetchPlacePhoto = async () => {
     try {
       const API_KEY = import.meta.env.VITE_GOOGLE_PLACE_API_KEY;
-      const query = place?.placeName; // Using place name for the query
+      const query = place?.placeName + "," + location; // Using place name for the query
       const searchUrl = `https://proxy-server-imo9.onrender.com/google-api/maps/api/place/textsearch/json?query=${encodeURIComponent(
         query
       )}&key=${API_KEY}`;
@@ -45,7 +45,7 @@ function PlaceCard({ place }) {
       )}`}
       target="_blank"
     >
-      <div className="h-[260px] flex items-center gap-4 p-4 shadow-md border rounded-xl bg-white hover:scale-105 transition-transform mt-2">
+      <div className="h-[240px] flex items-center gap-4 p-2 shadow-md border rounded-2xl bg-white hover:scale-105 transition-transform mt-2">
         {/* Image Section */}
         <div className="w-2/5 h-100%">
           <img

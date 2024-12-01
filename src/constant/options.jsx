@@ -32,7 +32,7 @@ export const SelectTravelesList=[
 export const SelectBudgetOptions = [
     {
         id:5,
-        title:'Cheap',
+        title:'Low',
         desc:'Stay conscious of costs',
         icon:'💵'
     },
@@ -54,7 +54,7 @@ export const AI_PROMPT=`Generate a detailed Travel Plan for the location: {locat
 
 1. Weather:(String) general Weather conditions there with approx range of temperature
 
-2. Provide a Hotels options list in the following format:
+2. Provide a Hotels options list (atleast 4 hotels) in the following format:
    - HotelName: (String) Name of the hotel.
    - HotelAddress: (String) Full address of the hotel.
    - pricePerNight: (Map) Estimated price range for a night in USD with:

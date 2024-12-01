@@ -2,7 +2,7 @@ import React from "react";
 import PlaceCard from "./PlaceCard";
 
 function PlacesToVisit({ obj }) {
-  const data = obj?.tripData?.itinerary;
+  const data = obj?.tripData?.tripData?.itinerary;
 
   return (
     <div className="p-4">
@@ -13,13 +13,13 @@ function PlacesToVisit({ obj }) {
             <h2 className="font-semibold text-md md:text-lg mb-3">
               Day {item?.DayNumber}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {item?.places?.map((place, idx) => (
                 <div key={idx} className="my-3">
                   <h2 className="font-medium text-sm text-orange-600 mb-1">
                     {place?.BestTime}
                   </h2>
-                  <PlaceCard place={place} />
+                  <PlaceCard place={place} location={obj?.userSelection?.location?.label} />
                 </div>
               ))}
             </div>
