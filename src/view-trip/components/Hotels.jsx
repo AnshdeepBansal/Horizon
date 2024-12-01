@@ -56,7 +56,7 @@ function Hotels({ obj , location}) {
       <h2 className="font-bold text-lg md:text-xl mt-2 mb-2">
         Hotel Recommendations
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
         {list.map((hotel, index) => (
           <Link
             to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
