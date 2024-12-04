@@ -32,7 +32,7 @@ function Hotels({ obj , location}) {
           const photoReference = data.results[0].photos[0].photo_reference;
           return `https://proxy-server-imo9.onrender.com/google-api/maps/api/place/photo?maxwidth=800&photo_reference=${photoReference}&key=${API_KEY}`;
         } else {
-          return "/default.jpeg"; // Default image if no photo available
+          return "/defaultHotel.webp"; // Default image if no photo available
         }
       });
 
@@ -60,14 +60,14 @@ function Hotels({ obj , location}) {
         {list.map((hotel, index) => (
           <Link
             to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              hotel?.HotelName + "," + hotel?.HotelAddress
+              hotel?.HotelName + " at " + hotel?.HotelAddress + "," + location
             )}`}
             target="_blank"
             key={index}
           >
             <div className="hover:scale-110 scale-105 hover:shadow-md hover:border transition-all rounded-xl p-2 cursor-pointer hover:bg-white h-[300px] md:h-[375px]">
               <img
-                src={photoUrls[index] || "/default.jpeg"}
+                src={photoUrls[index] || "/defaultHotel.webp"}
                 className="rounded-xl object-cover h-[180px] w-full"
                 alt={hotel?.HotelName} 
               />
@@ -79,7 +79,7 @@ function Hotels({ obj , location}) {
                   📍{hotel?.HotelAddress}
                 </h2>
                 <h2 className="text-xs sm:text-sm">
-                ${hotel?.pricePerNight?.min} - ${hotel?.pricePerNight?.max} per
+                ₹{Number(hotel?.pricePerNight?.min)*70} - ₹{Number(hotel?.pricePerNight?.max)*80} per
                   night
                 </h2>
                 <h2 className="text-xs sm:text-sm">⭐{hotel?.rating} stars</h2>

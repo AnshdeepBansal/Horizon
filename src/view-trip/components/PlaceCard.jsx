@@ -41,7 +41,7 @@ function PlaceCard({ place,location }) {
   return (
     <Link
       to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-        place?.placeName
+        place?.placeName + "," + location
       )}`}
       target="_blank"
     >
