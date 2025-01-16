@@ -34,7 +34,6 @@ function CreateTrip() {
       navigate('/');
       return;
     }
-    console.log(formData);
   }, [formData]);
 
   const  SaveAiTrip = async (TripData)=>
@@ -100,11 +99,9 @@ function CreateTrip() {
     .replace("{budget}", formData?.budget)
     .replace("{totalDays}", formData?.noOfDays);
     
-    console.log(FINAL_PROMPT);
     try{
       const result = await chatSession.sendMessage(FINAL_PROMPT);
       console.log("result aagya")
-      console.log(result?.response?.text());
       SaveAiTrip(result?.response?.text()); 
       setLoading(false);
     }

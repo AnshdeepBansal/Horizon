@@ -33,7 +33,6 @@ function Hero() {
         }
       )
       .then((resp) => {
-        console.log("User Info:", resp.data);
         localStorage.setItem("user", JSON.stringify(resp?.data));
         setOpenDialog(false);
         window.location.reload();

@@ -30,7 +30,6 @@ function ViewTrip() {
             setTripData(snap.data());
         }
     }
-    console.log('Document data:', tripData);
     return (
     <div className='md:px-20 lg:px-40 bg-slate-50' >
       <InfoSection obj={tripData}/>

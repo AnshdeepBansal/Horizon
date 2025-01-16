@@ -50,7 +50,6 @@ function Header() {
         }
       )
       .then((resp) => {
-        console.log(resp);
         localStorage.setItem("user", JSON.stringify(resp?.data));
         setOpenDialog(false);
         setSignIn(true);
